@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/questions', QuestionsController::class)->name('questions.stack');
+
+Route::get('/questions', QuestionsController::class)->name('questions');

@@ -25,6 +25,8 @@ class QuestionsRequest extends FormRequest
     {
         return [
             'tagged' => 'required|string',
+            'toDate' => 'string',
+            'fromDate' => 'string'
         ];
     }
 }
