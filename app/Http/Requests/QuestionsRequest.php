@@ -24,9 +24,9 @@ class QuestionsRequest extends FormRequest
     public function rules()
     {
         return [
-            'tagged' => 'required|string',
-            'toDate' => 'string',
-            'fromDate' => 'string'
+            'tagged'   => 'required|string',
+            'toDate'   => 'date|date_format:Y-m-d|before:tomorrow',
+            'fromDate' => 'date|date_format:Y-m-d|before:tomorrow'
         ];
     }
 }
