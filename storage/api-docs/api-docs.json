@@ -1,0 +1,56 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Stack API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/questions": {
+            "get": {
+                "tags": [
+                    "questions"
+                ],
+                "summary": "List of questions that tagged",
+                "description": "List of questions that tagged",
+                "parameters": [
+                    {
+                        "name": "tagged",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "name": "toDate",
+                        "in": "query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "questions"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
