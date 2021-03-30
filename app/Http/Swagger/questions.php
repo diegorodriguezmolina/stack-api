@@ -15,12 +15,12 @@
  *      ),
  *      @OA\Parameter(
  *          required=false,
- *          name="fromDate",
+ *          name="fromdate",
  *          in="query"
  *      ),
  *      @OA\Parameter(
  *          required=false,
- *          name="toDate",
+ *          name="todate",
  *          in="query"
  *      ),
  *      @OA\Response(response=200, description="",

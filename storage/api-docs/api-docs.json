@@ -19,12 +19,12 @@
                         "required": true
                     },
                     {
-                        "name": "fromDate",
+                        "name": "fromdate",
                         "in": "query",
                         "required": false
                     },
                     {
-                        "name": "toDate",
+                        "name": "todate",
                         "in": "query",
                         "required": false
                     }

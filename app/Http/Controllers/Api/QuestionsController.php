@@ -15,8 +15,8 @@ class QuestionsController extends Controller
 
         $data = $request->validated();
         $params = '&tagged=' . $data['tagged'];
-        $params .= empty($data['fromDate']) ? "" : '&fromdate=' . $data['fromDate'];
-        $params .= empty($data['toDate']) ? "" : '&todate=' . $data['toDate'];
+        $params .= empty($data['fromdate']) ? "" : '&fromdate=' . $data['fromdate'];
+        $params .= empty($data['todate']) ? "" : '&todate=' . $data['todate'];
 
         $this->endpoint = Http::get('https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow' . $params);
 

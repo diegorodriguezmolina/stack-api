@@ -23,7 +23,7 @@ class QuestionsTest extends TestCase
 
     public function testSuccessfulRequest()
     {
-        $params = 'tagged=react&toDate=2021-03-12&fromDate=2020-09-12';
+        $params = 'tagged=react&todate=2021-03-12&fromdate=2020-09-12';
         $this->json('GET', $this->endpoint . '?' . $params, $this->header)
             ->assertStatus(200)
             ->assertJsonStructure(
@@ -48,38 +48,74 @@ class QuestionsTest extends TestCase
             );
     }
 
-    public function testIncorrectDate()
+    public function testIncorrectFromDateParam()
     {
-        $this->json('GET', $this->endpoint . '?tagged=react&fromDate=224020-09-12', $this->header)
+        $this->json('GET', $this->endpoint . '?tagged=react&fromdate=224020-09-12', $this->header)
             ->assertStatus(422)
             ->assertJson([
                 "message" => "The given data was invalid.",
                 "errors" => [
-                    "fromDate" => ["The from date is not a valid date."]
+                    "fromdate" => ["The fromdate is not a valid date."]
                 ]
             ]);
     }
 
-    public function testIncorrectFormatDate()
+    public function testIncorrectFromDateParamFormat()
     {
-        $this->json('GET', $this->endpoint . '?tagged=react&fromDate=2020/09/12', $this->header)
+        $this->json('GET', $this->endpoint . '?tagged=react&fromdate=2020/09/12', $this->header)
             ->assertStatus(422)
             ->assertJson([
                 "message" => "The given data was invalid.",
                 "errors" => [
-                    "fromDate" => ["The from date does not match the format Y-m-d."]
+                    "fromdate" => ["The fromdate does not match the format Y-m-d."]
                 ]
             ]);
     }
 
-    public function testIncorrectDateAfterToday()
+    public function testIncorrectFromDateParamAfterToday()
     {
-        $this->json('GET', $this->endpoint . '?tagged=react&fromDate=2021-09-12', $this->header)
+        $this->json('GET', $this->endpoint . '?tagged=react&fromdate=2021-09-12', $this->header)
             ->assertStatus(422)
             ->assertJson([
                 "message" => "The given data was invalid.",
                 "errors" => [
-                    "fromDate" => ["The from date must be a date before tomorrow."]
+                    "fromdate" => ["The fromdate must be a date before tomorrow."]
+                ]
+            ]);
+    }
+
+    public function testIncorrectToDateParam()
+    {
+        $this->json('GET', $this->endpoint . '?tagged=react&todate=224020-09-12', $this->header)
+            ->assertStatus(422)
+            ->assertJson([
+                "message" => "The given data was invalid.",
+                "errors" => [
+                    "todate" => ["The todate is not a valid date."]
+                ]
+            ]);
+    }
+
+    public function testIncorrectToDateParamFormat()
+    {
+        $this->json('GET', $this->endpoint . '?tagged=react&todate=2020/09/12', $this->header)
+            ->assertStatus(422)
+            ->assertJson([
+                "message" => "The given data was invalid.",
+                "errors" => [
+                    "todate" => ["The todate does not match the format Y-m-d."]
+                ]
+            ]);
+    }
+
+    public function testIncorrectToDateParamAfterToday()
+    {
+        $this->json('GET', $this->endpoint . '?tagged=react&todate=2021-09-12', $this->header)
+            ->assertStatus(422)
+            ->assertJson([
+                "message" => "The given data was invalid.",
+                "errors" => [
+                    "todate" => ["The todate must be a date before tomorrow."]
                 ]
             ]);
     }

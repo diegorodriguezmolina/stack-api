@@ -25,8 +25,8 @@ class QuestionsRequest extends FormRequest
     {
         return [
             'tagged'   => 'required|string',
-            'toDate'   => 'date|date_format:Y-m-d|before:tomorrow',
-            'fromDate' => 'date|date_format:Y-m-d|before:tomorrow'
+            'todate'   => 'date|date_format:Y-m-d|before:tomorrow',
+            'fromdate' => 'date|date_format:Y-m-d|before:tomorrow'
         ];
     }
 }
