@@ -2,7 +2,7 @@
 
 ## Installation
 
-To install the project you can use composer
+To install the composer dependencies you can use:
 
 ```bash
 composer install
